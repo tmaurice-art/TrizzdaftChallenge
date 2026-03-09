@@ -204,13 +204,39 @@ Ready to create beautiful DAGs!</code></pre>
 <p><strong>Historical Context:</strong> In 1747, James Lind discovered that lemons prevent scurvy through a controlled experiment. However, the understanding was incomplete - they knew lemons worked but not why.</p>
 <p><strong>Your Task:</strong> Recreate this DAG showing the relationship between lemons and scurvy prevention.</p>
 <p><strong>Reference Image:</strong> <img src="https://raw.githubusercontent.com/flyaflya/persuasive/642288ea5f79050c05801c3d127084ac0f361a01/images/scurvy2.png" class="img-fluid"></p>
-<div id="dag-1-1747" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Replace this placeholder with your DAFT code</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DAG showing the 1747 understanding: Lemons → Scurvy Prevention</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here - recreate the DAG from the reference image</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use DAFT to create nodes and edges that match the visual structure</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize colors and styling to make it professional</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-dag-1-1747" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> daft</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DAG showing the 1747 understanding: Lemons → Scurvy Prevention</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pgm <span class="op">=</span> daft.PGM(dpi<span class="op">=</span><span class="dv">150</span>, alternate_style<span class="op">=</span><span class="st">"outer"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lemons node (cause)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>pgm.add_node(<span class="st">"lemons"</span>, <span class="st">"Lemons"</span>, <span class="dv">1</span>, <span class="dv">1</span>, aspect<span class="op">=</span><span class="fl">2.5</span>, scale<span class="op">=</span><span class="fl">1.1</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>             plot_params<span class="op">=</span>{</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"facecolor"</span>: <span class="st">"lightyellow"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"edgecolor"</span>: <span class="st">"darkgoldenrod"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"linewidth"</span>: <span class="dv">2</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"alpha"</span>: <span class="fl">0.9</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>             })</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Scurvy prevention node (effect)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>pgm.add_node(<span class="st">"scurvy_prevention"</span>, <span class="st">"Scurvy</span><span class="ch">\n</span><span class="st">Prevention"</span>, <span class="dv">3</span>, <span class="dv">1</span>, aspect<span class="op">=</span><span class="fl">2.5</span>, scale<span class="op">=</span><span class="fl">1.1</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>             plot_params<span class="op">=</span>{</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"facecolor"</span>: <span class="st">"lightgreen"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"edgecolor"</span>: <span class="st">"darkgreen"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"linewidth"</span>: <span class="dv">2</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"alpha"</span>: <span class="fl">0.9</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>             })</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>pgm.add_edge(<span class="st">"lemons"</span>, <span class="st">"scurvy_prevention"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>pgm.render()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="dag-1-1747" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/dag-1-1747-output-1.png" width="452" height="118" class="figure-img"></p>
+<figcaption>DAG 1: 1747 Understanding — Lemons prevent scurvy (correct but incomplete)</figcaption>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="dag-2-the-misguided-belief-wrong-understanding" class="level3">

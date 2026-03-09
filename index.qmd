@@ -139,13 +139,43 @@ pgm.render()
 ```{python}
 #| label: dag-2-misguided
 #| echo: true
+#| fig-cap: "DAG 2: Misguided belief — Acid → Bacteria death → Scurvy prevention (incorrect)"
 
-# TODO: Replace this placeholder with your DAFT code
+import daft
+
 # Create a DAG showing the misguided belief: Acid → Bacteria Death → Scurvy Prevention
+# Use amber/coral styling to indicate this is the wrong understanding
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-# Your code here - recreate the DAG from the reference image
-# This DAG should show the incorrect causal chain
-# Use different colors or styling to indicate this is the wrong understanding
+# Acid node (incorrectly believed cause)
+pgm.add_node("acid", "Acid", 1, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "mistyrose",
+                 "edgecolor": "coral",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+# Bacteria death node (incorrect mechanism)
+pgm.add_node("bacteria_death", "Bacteria\nDeath", 2.5, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "lavenderblush",
+                 "edgecolor": "indianred",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+# Scurvy prevention node (effect)
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 4, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "lightyellow",
+                 "edgecolor": "darkgoldenrod",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+
+pgm.add_edge("acid", "bacteria_death")
+pgm.add_edge("bacteria_death", "scurvy_prevention")
+
+pgm.render()
 ```
 
 ### DAG 3: The 1928 Understanding (Complete and Correct)
