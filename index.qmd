@@ -190,13 +190,32 @@ pgm.render()
 ```{python}
 #| label: dag-3-1928
 #| echo: true
+#| fig-cap: "DAG 3: 1928 Understanding — Vitamin C prevents scurvy (complete and correct)"
 
-# TODO: Replace this placeholder with your DAFT code
+import daft
+
 # Create a DAG showing the 1928 understanding: Vitamin C → Scurvy Prevention
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-# Your code here - recreate the DAG from the reference image
-# This should be the most complete and accurate representation
-# Use professional styling that would be suitable for a scientific publication
+# Vitamin C node (true cause)
+pgm.add_node("vitamin_c", "Vitamin C", 1, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "lightcyan",
+                 "edgecolor": "teal",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+# Scurvy prevention node (effect)
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "lightgreen",
+                 "edgecolor": "darkgreen",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+pgm.add_edge("vitamin_c", "scurvy_prevention")
+
+pgm.render()
 ```
 
 ## Student Requirements Section: Mastering DAFT Visualization {#student-analysis-section}
