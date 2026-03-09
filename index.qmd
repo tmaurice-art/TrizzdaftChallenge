@@ -99,13 +99,32 @@ Your task is to recreate these three historical DAGs using DAFT, making them vis
 ```{python}
 #| label: dag-1-1747
 #| echo: true
+#| fig-cap: "DAG 1: 1747 Understanding — Lemons prevent scurvy (correct but incomplete)"
 
-# TODO: Replace this placeholder with your DAFT code
+import daft
+
 # Create a DAG showing the 1747 understanding: Lemons → Scurvy Prevention
+pgm = daft.PGM(dpi=150, alternate_style="outer")
 
-# Your code here - recreate the DAG from the reference image
-# Use DAFT to create nodes and edges that match the visual structure
-# Customize colors and styling to make it professional
+# Lemons node (cause)
+pgm.add_node("lemons", "Lemons", 1, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "lightyellow",
+                 "edgecolor": "darkgoldenrod",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+# Scurvy prevention node (effect)
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3, 1, aspect=2.5, scale=1.1,
+             plot_params={
+                 "facecolor": "lightgreen",
+                 "edgecolor": "darkgreen",
+                 "linewidth": 2,
+                 "alpha": 0.9,
+             })
+pgm.add_edge("lemons", "scurvy_prevention")
+
+pgm.render()
 ```
 
 ### DAG 2: The Misguided Belief (Wrong Understanding)
