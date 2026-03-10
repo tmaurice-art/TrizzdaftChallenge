@@ -194,26 +194,35 @@ pgm.render()
 
 import daft
 
-# Create a DAG showing the 1928 understanding: Vitamin C → Scurvy Prevention
+# Create a DAG showing the 1928 understanding: Vitamin C → Collagen Synthesis → Scurvy Prevention
 pgm = daft.PGM(dpi=150, alternate_style="outer")
 
 # Vitamin C node (true cause)
-pgm.add_node("vitamin_c", "Vitamin C", 1, 1, aspect=2.5, scale=1.1,
+pgm.add_node("vitamin_c", "Vitamin C", 1, 1, aspect = 2.5, scale = 1.1,
              plot_params={
-                 "facecolor": "lightcyan",
-                 "edgecolor": "teal",
-                 "linewidth": 2,
-                 "alpha": 0.9,
+                 'facecolor': 'lightcyan',
+                 'edgecolor': 'teal',
+                 'linewidth': 2,
+                 'alpha': 0.9,
+             })
+# Collagen synthesis node (mechanism)
+pgm.add_node("collagen_synthesis", "Collagen\nSynthesis", 2, 1, aspect = 2.5, scale = 1.1,
+             plot_params={
+                 'facecolor': 'lightyellow',
+                 'edgecolor': 'goldenrod',
+                 'linewidth': 2,
+                 'alpha': 0.9,
              })
 # Scurvy prevention node (effect)
-pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3, 1, aspect=2.5, scale=1.1,
+pgm.add_node("scurvy_prevention", "Scurvy\nPrevention", 3, 1, aspect = 2.5, scale = 1.1,
              plot_params={
-                 "facecolor": "lightgreen",
-                 "edgecolor": "darkgreen",
-                 "linewidth": 2,
-                 "alpha": 0.9,
+                 'facecolor': 'lightgreen',
+                 'edgecolor': 'darkgreen',
+                 'linewidth': 2,
+                 'alpha': 0.9,
              })
-pgm.add_edge("vitamin_c", "scurvy_prevention")
+pgm.add_edge("vitamin_c", "collagen_synthesis")
+pgm.add_edge("collagen_synthesis", "scurvy_prevention")
 
 pgm.render()
 ```
